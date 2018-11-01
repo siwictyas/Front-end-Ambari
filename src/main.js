@@ -21,7 +21,10 @@ import Chart from 'chart.js'
 import Highcharts from 'highcharts'
 import 'vue-status-indicator/styles.css'
 import { StatusIndicator } from 'vue-status-indicator'
+import ElSearchTablePagination from 'el-search-table-pagination'
+import VueGoogleCharts from 'vue-google-charts'
 
+Vue.use(VueGoogleCharts)
 Vue.use(Navbar)
 Vue.use(BootstrapVue)
 Vue.use(Dropdown)
@@ -29,6 +32,7 @@ Vue.use(Collapse)
 Vue.use(VueChartkick, { Chartkick })
 Vue.use(VueChartkick, {adapter: Chart})
 Vue.use(VueChartkick, {adapter: Highcharts})
+Vue.use(ElSearchTablePagination)
 Vue.component('b-navbar', bNavbar);
 Vue.component('v-icon', Icon);
 Vue.component('ProgressBar', ProgressBar);

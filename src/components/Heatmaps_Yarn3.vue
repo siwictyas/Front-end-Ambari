@@ -5,7 +5,7 @@
       <b-col sm="3">
         <Nav_Vertical/>
       </b-col>
-      <b-col style="background-color:lightgrey">
+      <b-col sm="9" style="background-color:lightgrey">
         <b-container class="con-main">
           <b-nav id="navmetrics" class="mt-4">
             <b-nav-item href="/#/">METRICS</b-nav-item>
@@ -14,7 +14,7 @@
           </b-nav>
           <Dropdown/>
           <b-container id="cont_heatmaps" class="p-4">
-            <b-card header="HOST" header-class="header">
+            <b-card header="YARN" header-class="header">
               <div v-for="bar in bars" class="mb-1">
                 <p> <b> {{bar.text}} </b> </p>
                 <b-container id="borderProgress" class="p-3 mb-3">
@@ -37,7 +37,7 @@
                       :striped="true"
                       :animated="false"
                       :data="bar.data"
-                      variant="dark"
+                      variant="info"
                       style="color:white; font-weight:bold;"
                     ></b-progress-bar>
                       <b-progress-bar show-progress v-else
@@ -53,6 +53,8 @@
                   </b-progress>
                 </b-container>
               </div>
+                <b-btn href="/#/Heatmaps_Yarn2">&lsaquo;</b-btn>
+                <b-btn disabled href="">&rsaquo;</b-btn>
             </b-card>
           </b-container>
         </b-container>
@@ -79,9 +81,9 @@ export default {
       Dropdown,
       // value:[75, 32.5,10],
       bars: [
-        {variant: 'info', value: 75, data:75, text:"Host Memory Used (%)", size:" % from 100%", striped:true, animated:true},
-        {variant: 'info', value: 32.5, data:32.5, text:"Host CPU Wait IO (%)", size:" % from 100%", striped:true, animated:true},
-        {variant: 'info', value: 17, data:17, text:"Host Disk Space Used (%)", size:" % from 100%", striped:true, animated:true}
+        {value: (15/100)*100, data:15, text:"NodeManager RAM Utilized (%)", size:" % from 100%"},
+        {value:(30/100)*100, data:30, text:"NodeManager CPU Utilized (%)", size:"  % from 100%"},
+        {value: (65/100)*100, data:65, text:"Yarn Local Disk Space Utilization per NodeManager (%)",size:" % from 100%"},        
       ],
       timer: null
     }
@@ -100,10 +102,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
 .button{
     min-width: 40%;
     background: rgba(247, 249, 249,0.7);
@@ -121,38 +119,6 @@ h1, h2 {
 
 p{
     text-align: left;
-}
-
-.con1{
-  margin-top:3%;
-  min-height: 94%;
-  width: 97%;
-  background:white;
-  margin-left:0%;
-  padding: 0px;
-}
-
-#navmatrics a{
-  background: lightgrey;
-  color: black;
-  margin-left:-20px;
-}
-
-#navmatrics a.active{
-  background: white;
-  color: black;
-}
-
-#navmatrics a:hover{
-  background: rgba(253, 253, 253, 0.3);
-  color: black;
-}
-
-.con-nav{
-  background: lightgray;
-  margin-right:0px;
-  margin-left:-5px;
-  width: 102%;
 }
 
 /* #cont_heatmaps{

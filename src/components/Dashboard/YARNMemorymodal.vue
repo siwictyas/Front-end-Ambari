@@ -1,25 +1,18 @@
 <template>
   <div>
   <div class="small">
-    <b-col cols="12" class="mt-2 mb-2" id="header-metrics"> YARN Memory
-        <b-nav-item-dropdown class="ddown2" no-caret>
-        <template slot="button-content"> &#x22EE; </template>
-            <b-dropdown-item> <v-icon name="edit"/> Edit </b-dropdown-item>
-            <b-dropdown-item> <v-icon name="trash"/> Delete </b-dropdown-item>
-        </b-nav-item-dropdown>       
-    </b-col>    
     <pie-chart
       :chart-data="datacollection"
       :height="280">
     </pie-chart>
-
   </div>
   </div>
 </template>
 
 <script src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
-import PieChart from './PieChart.js'
+import PieChart from './PieChart.js';
+import YARNMemory from './YARNMemory'
 
   export default {
     components: {
@@ -44,17 +37,10 @@ import PieChart from './PieChart.js'
             },
           ]
         }
-      },
-      getRandomInt () {
-        return Math.floor(Math.random() * (50 - 5 + 1)) + 5
       }
     }
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-
-
 </style>

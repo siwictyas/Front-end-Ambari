@@ -5,16 +5,16 @@
       <b-col sm="3">
         <Nav_Vertical/>
       </b-col>
-      <b-col style="background-color:lightgrey">
+      <b-col sm="9" style="background-color:lightgrey">
         <b-container class="con-main">
           <b-nav id="navmetrics" class="mt-4">
             <b-nav-item href="/#/">METRICS</b-nav-item>
             <b-nav-item active href="/#/Heatmaps_Host">HEATMAPS</b-nav-item> 
-            <b-nav-item href="/#/ConfigHist">CONFIG HISTORY</b-nav-item> 
-          </b-nav>
+             <b-nav-item href="/#/ConfigHist">CONFIG HISTORY</b-nav-item> 
+          </b-nav> 
           <Dropdown/>
           <b-container id="cont_heatmaps" class="p-4">
-            <b-card header="HOST" header-class="header">
+            <b-card header="YARN" header-class="header">
               <div v-for="bar in bars" class="mb-1">
                 <p> <b> {{bar.text}} </b> </p>
                 <b-container id="borderProgress" class="p-3 mb-3">
@@ -22,6 +22,7 @@
                   <b-progress height=30px style="border:1px solid #CBCBCB">
                     <b-progress-bar show-progress v-if="bar.data==='Invalid Data'"
                       :value="bar.value"
+                      :max="bar.max"
                       :label="' '+bar.data+bar.size"
                       :size="bar.size"
                       :striped="false"
@@ -29,9 +30,10 @@
                       :data="bar.data"
                       variant="secondary"
                       style="color:black; font-weight:bold;"
-                    ></b-progress-bar>
+                    > Invalid Data</b-progress-bar>
                       <b-progress-bar show-progress v-else-if="bar.data==='Data Not Available'"
                       :value="bar.value"
+                      :max="bar.max"
                       :label="' '+bar.data+bar.size"
                       :size="bar.size"
                       :striped="true"
@@ -42,6 +44,7 @@
                     ></b-progress-bar>
                       <b-progress-bar show-progress v-else
                       :value="bar.value"
+                      :max="bar.max"
                       :label="' '+bar.data+bar.size"
                       :size="bar.size"
                       :striped="true"
@@ -53,6 +56,8 @@
                   </b-progress>
                 </b-container>
               </div>
+                <b-btn href="/#/Heatmaps_Yarn">&lsaquo;</b-btn>
+                <b-btn href="/#/Heatmaps_Yarn3">&rsaquo;</b-btn>
             </b-card>
           </b-container>
         </b-container>
@@ -79,9 +84,9 @@ export default {
       Dropdown,
       // value:[75, 32.5,10],
       bars: [
-        {variant: 'info', value: 75, data:75, text:"Host Memory Used (%)", size:" % from 100%", striped:true, animated:true},
-        {variant: 'info', value: 32.5, data:32.5, text:"Host CPU Wait IO (%)", size:" % from 100%", striped:true, animated:true},
-        {variant: 'info', value: 17, data:17, text:"Host Disk Space Used (%)", size:" % from 100%", striped:true, animated:true}
+        {value: 100, max:100, data:"Data Not Available", text:"DataNode JVM Heap Memory Committed (MB)", size:" "},
+        {value: 100, max:512, data:100, text:"NodeManager JVM Heap Memory Used (MB)", size:" MB used of 512 MB"},
+        {value: 15, max:100, data:15, text:"Allocated Containers (%)", size:"  % from 100%"},
       ],
       timer: null
     }
@@ -100,10 +105,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
 .button{
     min-width: 40%;
     background: rgba(247, 249, 249,0.7);
@@ -122,43 +123,6 @@ h1, h2 {
 p{
     text-align: left;
 }
-
-.con1{
-  margin-top:3%;
-  min-height: 94%;
-  width: 97%;
-  background:white;
-  margin-left:0%;
-  padding: 0px;
-}
-
-#navmatrics a{
-  background: lightgrey;
-  color: black;
-  margin-left:-20px;
-}
-
-#navmatrics a.active{
-  background: white;
-  color: black;
-}
-
-#navmatrics a:hover{
-  background: rgba(253, 253, 253, 0.3);
-  color: black;
-}
-
-.con-nav{
-  background: lightgray;
-  margin-right:0px;
-  margin-left:-5px;
-  width: 102%;
-}
-
-/* #cont_heatmaps{
-    border:1px solid gray;
-    width: 96.5%;
-} */
 
 #borderProgress{
   border: 1px solid lightgray;

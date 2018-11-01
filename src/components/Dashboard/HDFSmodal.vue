@@ -1,0 +1,46 @@
+<template>
+  <div>
+  <div class="small">
+    <pie-chart
+      :chart-data="datacollection"
+      :height="280">
+    </pie-chart>
+  </div>
+  </div>
+</template>
+
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+import PieChart from './PieChart.js';
+import HDFS from './HDFS';
+
+  export default {
+    components: {
+      PieChart
+    },
+    data () {
+      return {
+        datacollection: null
+      }
+    },
+    mounted () {
+      this.fillData()
+    },
+    methods: {
+      fillData () {
+        this.datacollection = {
+          labels: ['Non', 'Remaining', 'HDFS'],
+          datasets: [
+            {
+              backgroundColor: ['#FE4E7A','#F9EA4E', '#3CB7F8'],
+              data: [12,22,66]
+            },
+          ]
+        }
+      }
+    }
+  }
+</script>
+
+<style scoped>
+</style>

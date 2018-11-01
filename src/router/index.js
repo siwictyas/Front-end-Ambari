@@ -8,7 +8,10 @@ import Nav_Metrics from '@/components/Main/Nav_Metrics'
 import Dashboard from '@/components/Dashboard'
 import Heatmaps_Host from '@/components/Heatmaps_Host'
 import Heatmaps_HDFS from '@/components/Heatmaps_HDFS'
+import Heatmaps_HDFS2 from '@/components/Heatmaps_HDFS2'
 import Heatmaps_Yarn from '@/components/Heatmaps_Yarn'
+import Heatmaps_Yarn2 from '@/components/Heatmaps_Yarn2'
+import Heatmaps_Yarn3 from '@/components/Heatmaps_Yarn3'
 import ConfigHist from '@/components/ConfigHist'
 import Metrics from '@/components/Metrics'
 import Header_Metrics from '@/components/Dashboard/Header_Metrics'
@@ -27,7 +30,11 @@ import ResourceUptime from '@/components/Dashboard/ResourceUptime'
 import YARNMemory from '@/components/Dashboard/YARNMemory'
 import PieChart from '@/components/Dashboard/PieChart'
 import LineChart from '@/components/Dashboard/LineChart'
+import ClusterLoadChart from '@/components/Dashboard/ClusterLoadChart'
+import CPUUsgChart from '@/components/Dashboard/CPUUsgChart'
+import networkusgmodal from '@/components/Dashboard/networkusgmodal'
 import coba from '@/components/coba'
+
 
 Vue.use(Router)
 
@@ -49,9 +56,24 @@ export default new Router({
       component: Heatmaps_HDFS
     },
     {
+      path: '/Heatmaps_HDFS2',
+      name: 'Heatmaps_HDFS2',
+      component: Heatmaps_HDFS2
+    },
+    {
       path: '/Heatmaps_Yarn',
       name: 'Heatmaps_Yarn',
       component: Heatmaps_Yarn
+    },
+    {
+      path: '/Heatmaps_Yarn2',
+      name: 'Heatmaps_Yarn2',
+      component: Heatmaps_Yarn2
+    },
+    {
+      path: '/Heatmaps_Yarn3',
+      name: 'Heatmaps_Yarn3',
+      component: Heatmaps_Yarn3
     },
     {
       path: '/ConfigHist',
@@ -169,10 +191,21 @@ export default new Router({
       component: PieChart
     },
     {
+      path: '/ClusterLoadChart',
+      name: 'ClusterLoadChart',
+      component: ClusterLoadChart
+    },
+    {
+      path: '/CPUUsgChart',
+      name: 'CPUUsgChart',
+      component: CPUUsgChart
+    },
+    {
       path: '/coba',
       name: 'coba',
       component: coba
     },
+
     {
       path: '/Metrics',
       name: 'Metrics',

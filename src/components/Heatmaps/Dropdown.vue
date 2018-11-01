@@ -2,11 +2,11 @@
 <div>
 <b-row class="mt-4">
     <b-col md="4" offset-md="8">
-        <b-dropdown text="SELECT METRICS" variant="light">
+        <b-nav-item-dropdown text="SELECT METRICS" class="dd-metrics">
             <b-dropdown-item href="/#/Heatmaps_Host"> HOST </b-dropdown-item>
             <b-dropdown-item href="/#/Heatmaps_HDFS"> HDFS </b-dropdown-item>
             <b-dropdown-item href="/#/Heatmaps_Yarn"> YARN </b-dropdown-item>
-        </b-dropdown>
+        </b-nav-item-dropdown>
     </b-col>
     <!-- <b-col>
         <b-dropdown text="HDFS" variant="light">
@@ -37,3 +37,22 @@
 </b-row>
 </div>
 </template>
+
+<style>
+.dd-metrics{
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    width: 80%;
+}
+
+.dd-metrics a{
+    color: black;
+}
+
+.dd-metrics a:hover{
+    background: whitesmoke;
+    border-radius: 10px;
+    color: rgb(49, 48, 46);
+    font-weight: bold;
+}
+</style>

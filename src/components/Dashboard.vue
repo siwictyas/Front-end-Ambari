@@ -2,49 +2,43 @@
   <div>
     <Nav_Menu/>
     <b-row>
-    <b-col sm="3">
-      <Nav_Vertical/>
-    </b-col>
-    <b-col sm="9" style="background-color:lightgrey">
-      <b-container class="con1">
-        <b-container class="con-nav">
-          <b-row align-h="between">
-            <b-col lg="6">
-              <Nav_Metrics/>
-              <!-- <b-nav id="navmetrics">
-                <b-nav-item active>METRICS</b-nav-item>
-                <b-nav-item href="/#/Heatmaps_Host">HEATMAPS</b-nav-item> 
-                <b-nav-item href="/#/ConfigHist">CONFIG HISTORY</b-nav-item> 
-              </b-nav> -->
-            </b-col>
-            <b-col lg="5">
+      <b-col lg="3">
+        <Nav_Vertical/>
+      </b-col>
+      <b-col style="background-color:lightgrey">
+        <b-container class="con-main pb-3">
+          <b-nav id="navmetrics" class="mt-4">
+            <Nav_Metrics/>
+            <b-nav-item active>METRICS</b-nav-item>
+            <b-nav-item href="/#/Heatmaps_Host">HEATMAPS</b-nav-item> 
+            <b-nav-item href="/#/ConfigHist">CONFIG HISTORY</b-nav-item> 
+            <b-col lg="4" offset-md="3">
               <div class="ddown-metrics">
-                <b-nav-item-dropdown right split text="Matriks Action" size="sm" class="ddown2">
-                <b-dropdown-item> <v-icon name="plus"/> Add Service</b-dropdown-item>
-                <b-dropdown-item> <v-icon name="edit"/> Edit</b-dropdown-item>
+                <b-nav class="nav-dd">
+                <b-nav-item-dropdown right split text="Matriks Action" size="sm" class="dd_action">
+                  <b-dropdown-item style="background-color:white"> <v-icon name="plus"/> Add Service</b-dropdown-item>
+                  <b-dropdown-item style="background-color:white"> <v-icon name="edit"/> Edit</b-dropdown-item>
                 </b-nav-item-dropdown>
-                <b-nav-item-dropdown right split text="Last Hour" size="sm" class="ddown2">
-                  <b-dropdown-item>Last 1 Hour</b-dropdown-item>
-                  <b-dropdown-item>Last 2 Hour</b-dropdown-item>
-                  <b-dropdown-item>Last 4 Hour</b-dropdown-item>
-                  <b-dropdown-item>Last 12 Hour</b-dropdown-item>
-                  <b-dropdown-item>Last 24 Hour</b-dropdown-item>
-                  <b-dropdown-item>Last 1 Week</b-dropdown-item>
-                  <b-dropdown-item>Last 1 Month</b-dropdown-item>
-                  <b-dropdown-item>Last 1 Year</b-dropdown-item>
-                  <b-dropdown-item>Custom</b-dropdown-item>
+                <b-nav-item-dropdown right split text="Last Hour" size="sm" class="dd_lasthour">
+                  <div v-for="hour in hours" class="mb-1">
+                    <b-dropdown-item style="background-color:white">
+                      {{hour.text}}
+                    </b-dropdown-item>  
+                  </div>
                 </b-nav-item-dropdown>
+                </b-nav>
               </div>
-          </b-col>
-        </b-row>
-      </b-container>
-      <!-- Metrics -->
-      <b-container class="metrics">
-        <Metrics/>
-      </b-container>        
-    </b-container>
-  </b-col>
-  </b-row>
+            </b-col>
+          </b-nav>
+        <!-- Metrics -->
+          <b-container class="con1">
+            <b-container class="metrics">
+              <Metrics/>
+            </b-container>        
+          </b-container>
+        </b-container>
+      </b-col>
+    </b-row>
   </div>
 </template>
 
@@ -59,6 +53,16 @@ export default {
   data () {
     return {
       Nav_Metrics,
+      hours:[
+        { text: "Last 1 Hour"},
+        { text: "Last 2 Hour"},
+        { text: "Last 4 Hour"},
+        { text: "Last 12 Hour"},
+        { text: "Last 24 Hour"},
+        { text: "Last 1 Week"},
+        { text: "Last 1 Month"},
+        { text: "Last 1 Year"},        
+      ]
     }
   },
   components: {
@@ -75,39 +79,16 @@ export default {
 <style scoped>
 
 .con1{
-  margin-top:3%;
-  min-height: 94%;
-  width: 97%;
   background:white;
-  margin-left:0%;
-  padding: 0px;
-}
-
-.con-nav{
-  background: lightgray;
-  margin-right:0px;
-  margin-left:-5px;
-  width: 102%;
 }
 
 .dropdown2{
   height: 80%;
 }
 
-.matrics2{
-  border: 1px solid black;
-  height: 170px;
-  margin: 5px -5px;
-  width:230px;
-}
-
-.ddown2 a{
+dd_lasthour a{
   color: black;
-}
-
-.ddown2 a:hover{
-  background: #0c343d;
-  color: white;
+  background: white;
 }
 
 </style>

@@ -1,12 +1,18 @@
 <template>
   <div>
-  <div class="small">
-    <pie-chart
-      :chart-data="datacollection"
-      :height="280">
-    </pie-chart>
-
-  </div>
+    <b-col cols="12" class="mt-2 mb-2" id="header-metrics"> HDFS Disk Usage
+      <b-nav-item-dropdown class="ddown2" no-caret>
+      <template slot="button-content"> &#x22EE; </template>
+        <b-dropdown-item> <v-icon name="edit"/> Edit </b-dropdown-item>
+        <b-dropdown-item> <v-icon name="trash"/> Delete </b-dropdown-item>
+      </b-nav-item-dropdown>       
+    </b-col>    
+      <div class="small">
+        <pie-chart
+          :chart-data="datacollection"
+          :height="280">
+        </pie-chart>
+      </div>
   </div>
 </template>
 
@@ -29,12 +35,11 @@ import PieChart from './PieChart.js'
     methods: {
       fillData () {
         this.datacollection = {
-        //   labels:[this.getRandomInt(), this.getRandomInt()],
+          labels: ['Non', 'Remaining', 'HDFS'],
           datasets: [
             {
-              labels:['a','b','c'],
-              backgroundColor: ['#3CB7F8', '#FE4E7A','#F9EA4E'],
-              data: [96.82,1.25,1.93]
+              backgroundColor: ['#FE4E7A','#F9EA4E', '#3CB7F8'],
+              data: [12,22,66]
             },
           ]
         }
@@ -46,9 +51,13 @@ import PieChart from './PieChart.js'
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
 
+<style scoped>
+#header-metrics{
+  text-align: center;
+  font-size: 14px;
+  box-shadow: 1px 1px 2px 2px rgb(206, 208, 209);
+}
 
 
 </style>

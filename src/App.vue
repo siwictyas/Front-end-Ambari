@@ -23,5 +23,6 @@ export default {
 
 .cont-main{
   min-width: 1360px;
+  min-height:695px;
 }
 </style>
