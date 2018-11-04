@@ -14,7 +14,7 @@
         </b-col>
     </b-row>
     <b-row>
-        <b-table :items="items" :fields="fields" caption-top>
+        <b-table :items="items" :fields="fields" caption-top hover="">
             <template slot="status" slot-scope="row">
             <b-row>
               <b-col lg="3" offset-md="2">

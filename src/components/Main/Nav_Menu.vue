@@ -19,6 +19,7 @@
               <Notification/>
             <div slot="modal-footer" class="w-100">
               <b-btn class="float-left"> Go to Alerts Definitions </b-btn>
+              <b-btn class="float-right" variant="info"> OK </b-btn>              
             </div>
             </b-modal>
           </b-col>

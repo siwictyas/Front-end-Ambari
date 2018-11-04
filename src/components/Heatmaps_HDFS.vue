@@ -21,7 +21,7 @@
                 <b-container id="borderProgress" class="p-3 mb-3">
                   <p> Default Track </p>
                   <b-progress height=30px style="border:1px solid #CBCBCB">
-<b-progress-bar show-progress v-if="bar.data==='Invalid Data'"
+                  <b-progress-bar show-progress v-if="bar.data==='Invalid Data'"
                       :value="bar.value"
                       :label="' '+bar.data+bar.size"
                       :size="bar.size"
@@ -41,7 +41,7 @@
                       variant="dark"
                       style="color:white; font-weight:bold;"
                     ></b-progress-bar>
-                      <b-progress-bar show-progress v-else
+                      <b-progress-bar show-progress v-else-if="bar.value>0 && bar.value <=20"
                       :value="bar.value"
                       :label="' '+bar.data+bar.size"
                       :size="bar.size"
@@ -49,7 +49,47 @@
                       :animated="true"
                       :data="bar.data"
                       variant="info"
-                      style="color:black; font-weight:bold;"
+                      style="color:white; font-weight:bold;"
+                    ></b-progress-bar>
+                      <b-progress-bar show-progress v-else-if="bar.value>20 && bar.value <=40"
+                      :value="bar.value"
+                      :label="' '+bar.data+bar.size"
+                      :size="bar.size"
+                      :striped="true"
+                      :animated="true"
+                      :data="bar.data"
+                      variant="success"
+                      style="color:white; font-weight:bold;"
+                    ></b-progress-bar>
+                      <b-progress-bar show-progress v-else-if="bar.value>40 && bar.value <=60"
+                      :value="bar.value"
+                      :label="' '+bar.data+bar.size"
+                      :size="bar.size"
+                      :striped="true"
+                      :animated="true"
+                      :data="bar.data"
+                      variant="warning"
+                      style="color:white; font-weight:bold;"
+                    ></b-progress-bar>
+                      <b-progress-bar show-progress v-else-if="bar.value>60 && bar.value <=80"
+                      :value="bar.value"
+                      :label="' '+bar.data+bar.size"
+                      :size="bar.size"
+                      :striped="false"
+                      :animated="false"
+                      :data="bar.data"
+                      variant="warning"
+                      style="color:white; font-weight:bold;"
+                    ></b-progress-bar>
+                      <b-progress-bar show-progress v-else-if="bar.value>80 && bar.value <=100"
+                      :value="bar.value"
+                      :label="' '+bar.data+bar.size"
+                      :size="bar.size"
+                      :striped="true"
+                      :animated="true"
+                      :data="bar.data"
+                      variant="danger"
+                      style="color:white; font-weight:bold;"
                     ></b-progress-bar>
                   </b-progress>
                 </b-container>

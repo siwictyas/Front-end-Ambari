@@ -17,7 +17,23 @@
             <b-input-group>
               <b-form-input v-model="filter" id="search" :state="true" class="m-3" placeholder="Type to Search" />
             </b-input-group>
-              <b-table show-empty responsive :items="items" :fields="fields" :filter="filter" hover style="text-align:left">   </b-table>                
+              <b-table show-empty responsive :items="items" :fields="fields" :filter="filter" hover style="text-align:left">
+                <template slot="service" slot-scope="data">
+                  <b-row>
+                    <b-col lg="3">
+                      <p style="background-color:#45818e; width:35px; color:white" class="pl-2"> {{data.item.text}} </p>
+                    </b-col>
+                    <b-col lg="9">
+                      <p>
+                        {{data.item.service}}
+                      </p>
+                    </b-col>
+                  </b-row>
+                </template> 
+              </b-table>  
+              <b-pagination align="center" :total-rows="10" v-model="currentPage" :per-page="3">
+              </b-pagination>
+              <br>            
           </b-container>
         </b-container>
       </b-col>
@@ -31,16 +47,16 @@ import Nav_Vertical from './Main/Nav_Vertical';
 import Nav_Metrics from './Main/Nav_Metrics';
 
 const items = [
-  { service: 'YARN', config: 'Default', created:'Fri, Sep 07 2018, 15:11', author:'Admin', notes: 'Initial' },
-  { service: 'HDFS', config: 'Default', created:'Fri, Sep 07 2018, 15:11', author:'Admin', notes: 'Initial FOR' },
-  { service: 'MapReduce2', config : 'Default', created: 'Fri, Sep 07 2018, 15:11', author:'Admin', notes:'Initial Configuration for '},
-  { service: 'Zookeeper', config : 'Default', created: 'Fri, Sep 07 2018, 15:11', author:'Admin', notes:'Initial Configuration for '},  
-  { service: 'InfraSolr', config : 'Default', created: 'Fri, Sep 07 2018, 15:39', author:'Admin', notes:'Initial Configuration for Solr'},  
-  { service: 'HDFS', config : 'Default', created: 'Fri, Sep 07 2018, 15:45', author:'Admin', notes:'-'},
-  { service: 'MapReduce2', config : 'Default', created: 'Fri, Sep 07 2018, 15:45', author:'Admin', notes:'-'},      
-  { service: 'YARN', config : 'Default', created: 'Fri, Sep 07 2018, 15:45', author:'Admin', notes:'-'},  
-  { service: 'Ambari Metrics', config : 'Default', created: 'Fri, Sep 07 2018, 15:45', author:'Admin', notes:'-'},  
-  { service: 'HDFS', config : 'Default', created: 'Fri, Sep 07 2018, 15:45', author:'Admin', notes:'-'},  
+  { text:'V1', service: 'YARN', config: 'Default', created:'Fri, Sep 07 2018, 15:11', author:'Admin', notes: 'Initial' },
+  { text:'V1', service: 'HDFS', config: 'Default', created:'Fri, Sep 07 2018, 15:11', author:'Admin', notes: 'Initial FOR' },
+  { text:'V1', service: 'MapReduce2', config : 'Default', created: 'Fri, Sep 07 2018, 15:11', author:'Admin', notes:'Initial Configuration for '},
+  { text:'V1', service: 'Zookeeper', config : 'Default', created: 'Fri, Sep 07 2018, 15:11', author:'Admin', notes:'Initial Configuration for '},  
+  { text:'V1', service: 'InfraSolr', config : 'Default', created: 'Fri, Sep 07 2018, 15:39', author:'Admin', notes:'Initial Configuration for Solr'},  
+  { text:'V2', service: 'HDFS', config : 'Default', created: 'Fri, Sep 07 2018, 15:45', author:'Admin', notes:'-'},
+  { text:'V2', service: 'MapReduce2', config : 'Default', created: 'Fri, Sep 07 2018, 15:45', author:'Admin', notes:'-'},      
+  { text:'V2', service: 'YARN', config : 'Default', created: 'Fri, Sep 07 2018, 15:45', author:'Admin', notes:'-'},  
+  { text:'V2', service: 'Ambari Metrics', config : 'Default', created: 'Fri, Sep 07 2018, 15:45', author:'Admin', notes:'-'},  
+  { text:'V1',service: 'HDFS', config : 'Default', created: 'Fri, Sep 07 2018, 15:45', author:'Admin', notes:'-'},  
     
 ]
 
@@ -57,6 +73,7 @@ export default {
       ],
       totalRows: items.length,
       filter: null,
+      currentPage: 1
     }
   },
   components: {

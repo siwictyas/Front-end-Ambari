@@ -8,10 +8,10 @@
       <b-col style="background-color:lightgrey">
         <b-container class="con-main pb-3">
           <b-nav id="navmetrics" class="mt-4">
-            <Nav_Metrics/>
             <b-nav-item active>METRICS</b-nav-item>
             <b-nav-item href="/#/Heatmaps_Host">HEATMAPS</b-nav-item> 
             <b-nav-item href="/#/ConfigHist">CONFIG HISTORY</b-nav-item> 
+            
             <b-col lg="4" offset-md="3">
               <div class="ddown-metrics">
                 <b-nav class="nav-dd">
@@ -23,7 +23,8 @@
                   <div v-for="hour in hours" class="mb-1">
                     <b-dropdown-item style="background-color:white">
                       {{hour.text}}
-                    </b-dropdown-item>  
+                    </b-dropdown-item> 
+                    <Nav_Metrics/> 
                   </div>
                 </b-nav-item-dropdown>
                 </b-nav>
@@ -90,5 +91,30 @@ dd_lasthour a{
   color: black;
   background: white;
 }
+#navmetrics{
+  background: lightgray;
+}
 
+#navmetrics a{
+  background: lightgrey;
+  color: black;
+  border-radius: 8px 8px 0px 0px;
+}
+
+#navmetrics a.active{
+  background: white;
+  color: black;
+}
+
+#navmetrics a:hover{
+  background: rgba(253, 253, 253, 0.3);
+  color: black;
+  font-weight: bold;
+}
+
+.con-main{
+  background-color:white;
+  margin:0px; padding:0px;
+  min-height: 592px;
+}
 </style>

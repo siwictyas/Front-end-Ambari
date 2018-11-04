@@ -12,6 +12,7 @@
             <b-nav-item active href="/#/Heatmaps_Host">HEATMAPS</b-nav-item> 
             <b-nav-item href="/#/ConfigHist">CONFIG HISTORY</b-nav-item> 
           </b-nav>
+          <Nav_Metrics/>
           <Dropdown/>
           <b-container id="cont_heatmaps" class="p-4">
             <b-card header="HOST" header-class="header">
@@ -40,7 +41,7 @@
                       variant="dark"
                       style="color:white; font-weight:bold;"
                     ></b-progress-bar>
-                      <b-progress-bar show-progress v-else
+                      <b-progress-bar show-progress v-else-if="bar.value>0 && bar.value <=20"
                       :value="bar.value"
                       :label="' '+bar.data+bar.size"
                       :size="bar.size"
@@ -48,7 +49,47 @@
                       :animated="true"
                       :data="bar.data"
                       variant="info"
-                      style="color:black; font-weight:bold;"
+                      style="color:white; font-weight:bold;"
+                    ></b-progress-bar>
+                      <b-progress-bar show-progress v-else-if="bar.value>20 && bar.value <=40"
+                      :value="bar.value"
+                      :label="' '+bar.data+bar.size"
+                      :size="bar.size"
+                      :striped="true"
+                      :animated="true"
+                      :data="bar.data"
+                      variant="success"
+                      style="color:white; font-weight:bold;"
+                    ></b-progress-bar>
+                      <b-progress-bar show-progress v-else-if="bar.value>40 && bar.value <=60"
+                      :value="bar.value"
+                      :label="' '+bar.data+bar.size"
+                      :size="bar.size"
+                      :striped="true"
+                      :animated="true"
+                      :data="bar.data"
+                      variant="warning"
+                      style="color:white; font-weight:bold;"
+                    ></b-progress-bar>
+                      <b-progress-bar show-progress v-else-if="bar.value>60 && bar.value <=80"
+                      :value="bar.value"
+                      :label="' '+bar.data+bar.size"
+                      :size="bar.size"
+                      :striped="false"
+                      :animated="false"
+                      :data="bar.data"
+                      variant="warning"
+                      style="color:white; font-weight:bold;"
+                    ></b-progress-bar>
+                      <b-progress-bar show-progress v-else-if="bar.value>80 && bar.value <=100"
+                      :value="bar.value"
+                      :label="' '+bar.data+bar.size"
+                      :size="bar.size"
+                      :striped="true"
+                      :animated="true"
+                      :data="bar.data"
+                      variant="danger"
+                      style="color:white; font-weight:bold;"
                     ></b-progress-bar>
                   </b-progress>
                 </b-container>
@@ -79,7 +120,7 @@ export default {
       Dropdown,
       // value:[75, 32.5,10],
       bars: [
-        {variant: 'info', value: 75, data:75, text:"Host Memory Used (%)", size:" % from 100%", striped:true, animated:true},
+        {variant: 'info', value: 81, data:81, text:"Host Memory Used (%)", size:" % from 100%", striped:true, animated:true},
         {variant: 'info', value: 32.5, data:32.5, text:"Host CPU Wait IO (%)", size:" % from 100%", striped:true, animated:true},
         {variant: 'info', value: 17, data:17, text:"Host Disk Space Used (%)", size:" % from 100%", striped:true, animated:true}
       ],
@@ -132,28 +173,6 @@ p{
   padding: 0px;
 }
 
-#navmatrics a{
-  background: lightgrey;
-  color: black;
-  margin-left:-20px;
-}
-
-#navmatrics a.active{
-  background: white;
-  color: black;
-}
-
-#navmatrics a:hover{
-  background: rgba(253, 253, 253, 0.3);
-  color: black;
-}
-
-.con-nav{
-  background: lightgray;
-  margin-right:0px;
-  margin-left:-5px;
-  width: 102%;
-}
 
 /* #cont_heatmaps{
     border:1px solid gray;
@@ -171,4 +190,6 @@ p{
   font-size: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+
 </style>
